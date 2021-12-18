@@ -10,5 +10,7 @@ namespace GQLWebApi.Models
 
         public string? LicenseKey { get; set; }
 
+        public List<Command> Commands { get; set; } = new List<Command>();
+
     }
 }

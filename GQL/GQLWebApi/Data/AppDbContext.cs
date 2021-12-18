@@ -15,7 +15,9 @@ namespace GQLWebApi.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new PlatformConfiguration());
+            modelBuilder
+                .ApplyConfiguration(new CommandConfiguration())
+                .ApplyConfiguration(new PlatformConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

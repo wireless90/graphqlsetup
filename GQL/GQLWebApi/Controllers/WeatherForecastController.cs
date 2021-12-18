@@ -1,5 +1,6 @@
 using GQLWebApi.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GQLWebApi.Controllers
 {
@@ -24,7 +25,10 @@ namespace GQLWebApi.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            var platforms = _appDbContext.Platforms.Where(x => x.Id == 2).ToList();
+            var platforms = _appDbContext.Platforms
+                                            .Include(x => x.Commands)
+                                            .ToList();
+
             var xx = platforms.ToString();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
