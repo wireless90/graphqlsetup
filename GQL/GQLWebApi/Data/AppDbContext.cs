@@ -8,7 +8,7 @@ namespace GQLWebApi.Data
     {
         public AppDbContext(DbContextOptions dbContextOptions) : base (dbContextOptions)    
         {
-
+            
         }
 
         public DbSet<Platform>  Platforms { get; set; }

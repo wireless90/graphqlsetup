@@ -1,3 +1,4 @@
+using GQLWebApi.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GQLWebApi.Controllers
@@ -12,15 +13,19 @@ namespace GQLWebApi.Controllers
     };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly AppDbContext _appDbContext;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, AppDbContext appDbContext)
         {
             _logger = logger;
+            this._appDbContext = appDbContext;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            var platforms = _appDbContext.Platforms.Where(x => x.Id == 2).ToList();
+            var xx = platforms.ToString();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),

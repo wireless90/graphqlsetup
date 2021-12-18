@@ -1,11 +1,34 @@
-var builder = WebApplication.CreateBuilder(args);
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using GQLWebApi.Data;
+using Microsoft.EntityFrameworkCore;
 
-// Add services to the container.
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+ConfigureHostBuilder configureHostBuilder = builder.Host;
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+configureHostBuilder.UseServiceProviderFactory<ContainerBuilder>(new AutofacServiceProviderFactory());
+
+
+IConfiguration configuration = builder.Configuration;
+IServiceCollection serviceCollection = builder.Services;
+
+serviceCollection.AddLogging();
+serviceCollection.AddControllers();
+serviceCollection.AddEndpointsApiExplorer();
+serviceCollection.AddSwaggerGen();
+//serviceCollection.AddDbContext<AppDbContext>(options => 
+//{
+//    options.UseSqlServer(configuration.GetConnectionString("Local"));
+
+//});
+configureHostBuilder.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+{
+    containerBuilder
+        .RegisterType<AppDbContext>()
+        .WithParameter("dbContextOptions", new DbContextOptionsBuilder<AppDbContext>().UseSqlServer(configuration.GetConnectionString("Local")).Options)
+        .InstancePerLifetimeScope();
+
+});
 
 var app = builder.Build();
 

@@ -9,7 +9,7 @@ namespace GQLWebApi.Data.Configurations
         public void Configure(EntityTypeBuilder<Platform> builder)
         {
             builder
-                .ToTable("PlatForms");
+                .ToTable("Platforms");
 
             builder.HasKey(x => x.Id);
 
@@ -22,6 +22,7 @@ namespace GQLWebApi.Data.Configurations
                 .HasMaxLength(100);
 
             builder.Property(x => x.LicenseKey)
+                .IsRequired(false)
                 .HasMaxLength(100);
 
         }
