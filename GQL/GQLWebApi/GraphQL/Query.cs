@@ -1,17 +1,23 @@
 ﻿using GQLWebApi.Data;
 using GQLWebApi.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace GQLWebApi.GraphQL
 {
     public class Query
     {
-
-        public IQueryable<Platform>  GetPlatforms([Service] AppDbContext appDbContext)
+        //[UseProjection]
+        public IQueryable<Platform>  GetPlatforms([Service] AppDbContext? appDbContext)
         {
             return appDbContext
-                .Platforms
-                .Include(x => x.Commands);
+                .Platforms;
+        }
+    }
+
+    public class QueryType : ObjectType<Query>
+    {
+        protected override void Configure(IObjectTypeDescriptor<Query> descriptor)
+        {
+            descriptor.Field(x => x.GetPlatforms(default)).UseProjection();
         }
     }
 }

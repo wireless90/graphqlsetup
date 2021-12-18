@@ -2,6 +2,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using GQLWebApi.Data;
 using GQLWebApi.GraphQL;
+using GQLWebApi.GraphQL.Platforms;
 using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -19,7 +20,10 @@ serviceCollection.AddEndpointsApiExplorer();
 serviceCollection.AddSwaggerGen();
 serviceCollection
     .AddGraphQLServer()
-    .AddQueryType<Query>();
+    .AddQueryType<Query>()
+    .AddType<PlatformType>()
+    .AddType<QueryType>()
+    .AddProjections();
 //serviceCollection.AddDbContext<AppDbContext>(options => 
 //{
 //    options.UseSqlServer(configuration.GetConnectionString("Local"));

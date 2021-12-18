@@ -6,7 +6,9 @@ namespace GQLWebApi.GraphQL.Platforms
     {
         protected override void Configure(IObjectTypeDescriptor<Platform> descriptor)
         {
-            
+            //descriptor.Field(x => x.Commands)
+            //    .IsProjected(true);
+
             base.Configure(descriptor);
         }
     }
