@@ -1,6 +1,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using GQLWebApi.Data;
+using GQLWebApi.GraphQL;
 using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,9 @@ serviceCollection.AddLogging();
 serviceCollection.AddControllers();
 serviceCollection.AddEndpointsApiExplorer();
 serviceCollection.AddSwaggerGen();
+serviceCollection
+    .AddGraphQLServer()
+    .AddQueryType<Query>();
 //serviceCollection.AddDbContext<AppDbContext>(options => 
 //{
 //    options.UseSqlServer(configuration.GetConnectionString("Local"));
@@ -39,10 +43,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseRouting();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseEndpoints(endpointRouteBuilder =>
+{
+    endpointRouteBuilder.MapGraphQL();
+});
+
+app.UseGraphQLVoyager(path: "/graphql-voyager");
 app.MapControllers();
 
 app.Run();
