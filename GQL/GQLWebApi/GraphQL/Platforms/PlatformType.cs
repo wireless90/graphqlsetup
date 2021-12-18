@@ -6,8 +6,9 @@ namespace GQLWebApi.GraphQL.Platforms
     {
         protected override void Configure(IObjectTypeDescriptor<Platform> descriptor)
         {
+            //Can turn off projection
             //descriptor.Field(x => x.Commands)
-            //    .IsProjected(true);
+            //    .IsProjected(false);
 
             base.Configure(descriptor);
         }
