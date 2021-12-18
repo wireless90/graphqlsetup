@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GQLWebApi", "GQLWebApi\GQLWebApi.csproj", "{8381406B-E2CD-4F44-A989-83F3B67E1435}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1ADC778A-A75A-4DB7-83D7-E3655F4C3E95}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8381406B-E2CD-4F44-A989-83F3B67E1435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8381406B-E2CD-4F44-A989-83F3B67E1435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8381406B-E2CD-4F44-A989-83F3B67E1435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8381406B-E2CD-4F44-A989-83F3B67E1435}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1816BC74-336F-4C70-8520-2691D67F5C99}
+	EndGlobalSection
+EndGlobal
