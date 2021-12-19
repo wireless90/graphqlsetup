@@ -6,6 +6,7 @@ namespace GQLWebApi.GraphQL.Commands
     {
         protected override void Configure(IObjectTypeDescriptor<Command> descriptor)
         {
+            /* How to change field name */
             descriptor
                 .Field(x => x.CommandLine)
                 .Name("CmdLine");
