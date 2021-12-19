@@ -10,7 +10,7 @@ namespace GQLWebApi.GraphQL.Platforms
             //descriptor.Field(x => x.Commands)
             //    .IsProjected(false);
 
-            ///Apply custom type
+            ///Apply custom scalar string type
             ///<see cref="LicenseKeyType"/>
             descriptor.Field(x => x.LicenseKey)
                 .Type<LicenseKeyType>();
