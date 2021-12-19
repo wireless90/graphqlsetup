@@ -2,6 +2,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using GQLWebApi.Data;
 using GQLWebApi.GraphQL;
+using GQLWebApi.GraphQL.Commands;
 using GQLWebApi.GraphQL.Platforms;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,6 +23,7 @@ serviceCollection
     .AddGraphQLServer()
     .AddQueryType<Query>()
     .AddType<PlatformType>()
+    .AddType<CommandType>()
     .AddType<QueryType>()
     .AddProjections();
 //serviceCollection.AddDbContext<AppDbContext>(options => 
