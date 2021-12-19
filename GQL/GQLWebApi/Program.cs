@@ -22,6 +22,7 @@ serviceCollection.AddSwaggerGen();
 serviceCollection
     .AddGraphQLServer()
     .AddQueryType<Query>()
+    .AddType<LicenseKeyType>()
     .AddType<PlatformType>()
     .AddType<CommandType>()
     .AddType<QueryType>()
